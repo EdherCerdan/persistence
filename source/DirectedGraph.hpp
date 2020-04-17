@@ -19,15 +19,6 @@ class Node {
 
   virtual ~Node() {}
 
-  /**
-   *  \brief Access specified element
-   *
-   *  Returns a reference to the element at specified location position. If id
-   * is not within the range of the container an exception of type
-   * std::out_of_range is thrown. If no node exist at the location
-   * std::logic_error is thrown.
-   *
-   */
   Node& operator[](std::size_t id) const {
     if (out_ptrs_size_ < id) {
       throw std::out_of_range("Index out of node edges range.");
@@ -91,7 +82,7 @@ class DirectedGraph {
     u->forward_[position] = v;
   }
 
- private:
+ protected:
   Node* root_ptr_;
   std::size_t out_ptrs_size_;
 };
